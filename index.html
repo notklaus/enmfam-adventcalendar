@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advent Calendar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Advent Calendar</h1>
+    <div class="calendar">
+      <!-- Cards for each day -->
+      <script>
+        // Dynamically create cards for days 13 to 25
+        for (let day = 13; day <= 25; day++) {
+          document.write(`
+            <div class="card" onclick="flipCard(event)">
+              <div class="card-inner">
+                <div class="card-front">${day}</div>
+                <div class="card-back">Dare ${day - 12}</div>
+              </div>
+            </div>
+          `);
+        }
+      </script>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
