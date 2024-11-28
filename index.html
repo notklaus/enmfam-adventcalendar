@@ -12,13 +12,30 @@
     <div class="calendar">
       <!-- Cards for each day -->
       <script>
+        // List of dares for each day
+        const dares = [
+          "I dare you to meet 3 people who are practicing solo polyamory (prioritize independence while maintaining multiple relationships).",
+          "I dare you to meet 2 people in a relationship where one partner is polyamorous and the other is monogamous (poly/mono dynamic).",
+          "I dare you to meet 4 people who consider themselves relationship anarchists (reject hierarchical relationship norms).",
+          "I dare you to meet 5 people who actively use 'kitchen table polyamory' as their relationship model (all partners comfortable engaging in shared social spaces).",
+          "I dare you to meet 2 people who prioritize platonic relationships in their polyamorous structure (queerplatonic or non-romantic partnerships).",
+          "I dare you to meet 6 people who have explored open relationships as a gateway to ethical non-monogamy (consensual non-monogamy without emotional connections beyond the primary).",
+          "I dare you to meet 3 people who practice hierarchical polyamory (prioritize a primary partner while having secondary relationships).",
+          "I dare you to meet 1 person who is part of a triad or throuple (three people in a consensual, mutual relationship).",
+          "I dare you to meet 2 people who have been part of a polycule for over 5 years (a network of polyamorous relationships).",
+          "I dare you to meet 5 people who identify as swingers (focus on consensual non-monogamy, often centered on sexual exploration).",
+          "I dare you to meet 3 people who have transitioned from monogamy to polyamory within the past year and ask about their journey.",
+          "I dare you to meet 1 person who is a community organizer or educator in the ethical non-monogamy/polyamory space to learn about the broader movement."
+        ];
+
         // Dynamically create cards for days 13 to 25
         for (let day = 13; day <= 25; day++) {
+          const dareIndex = day - 13; // Match day to dare array
           document.write(`
             <div class="card" onclick="flipCard(event)">
               <div class="card-inner">
                 <div class="card-front">${day}</div>
-                <div class="card-back">Dare ${day - 12}</div>
+                <div class="card-back">${dares[dareIndex]}</div>
               </div>
             </div>
           `);
