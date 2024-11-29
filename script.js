@@ -2,7 +2,9 @@ function loadCalendar() {
   const calendar = document.getElementById("calendar");
 
   // Define card numbers (1 to 24) and shuffle them
-  const numbers = Array.from({ length: 24 }, (_, i) => i + 1);
+  const startNumber = 1;
+  const count = 24;
+  const numbers = Array.from({ length: count }, (_, i) => i + startNumber);
   shuffleArray(numbers);
 
   const christmasIcons = ["🎄", "🎅", "❄", "🎁", "⭐"];
@@ -10,8 +12,9 @@ function loadCalendar() {
   numbers.forEach((number) => {
     const card = document.createElement("div");
     card.className = "card";
-    card.setAttribute("onclick", `openCard(event, '${number}')`);
+    card.setAttribute("data-date", number); // Attach the date as a custom attribute
     card.textContent = `${number}${getOrdinalSuffix(number)}`;
+    card.addEventListener("click", (event) => openCard(event, number));
 
     // Add 1-2 random Christmas icons to the card
     const iconCount = Math.floor(Math.random() * 2) + 1; // Randomize 1 to 2 icons
@@ -20,9 +23,9 @@ function loadCalendar() {
       icon.className = "christmas-icon";
       icon.innerHTML = christmasIcons[Math.floor(Math.random() * christmasIcons.length)];
 
-      const randomPosition = () => Math.random() * 60 + 20; // Random position (20% to 80%)
-      icon.style.top = `${randomPosition()}%`;
-      icon.style.left = `${randomPosition()}%`;
+      const position = getRandomPosition();
+      icon.style.top = position.top;
+      icon.style.left = position.left;
 
       card.appendChild(icon);
     }
@@ -30,6 +33,7 @@ function loadCalendar() {
     calendar.appendChild(card);
   });
 }
+
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -45,6 +49,24 @@ function getOrdinalSuffix(num) {
   return "th";
 }
 
+function getRandomPosition() {
+  // Predefined positions
+  const positions = [
+    { top: "10%", left: "10%" }, // Top left
+    { top: "10%", left: "50%" }, // Top middle
+    { top: "10%", left: "80%" }, // Top right
+    { top: "50%", left: "10%" }, // Left center
+    { top: "50%", left: "80%" }, // Right center
+    { top: "80%", left: "10%" }, // Bottom left
+    { top: "80%", left: "50%" }, // Bottom middle
+    { top: "80%", left: "80%" }  // Bottom right
+  ];
+
+  // Randomize from predefined positions
+  return positions[Math.floor(Math.random() * positions.length)];
+}
+
+
 let activeCard = null;
 
 function openCard(event, date) {
@@ -57,9 +79,26 @@ function openCard(event, date) {
   document.getElementById("modal-date").innerText = `December ${ordinalDate}`;
   document.getElementById("modal-body").innerText = dareText;
 
+  // Show overlay with dimming effect
+  overlay.style.opacity = "0.8";
+  // overlay.style.pointerEvents = "auto";
 
-  card.style.transform = "rotateY(70deg)";
-  card.style.transition = "transform 0.5s ease";
+  // Get card position and size
+  const cardRect = card.getBoundingClientRect();
+  const modalStyle = modal.style;
+
+  // Calculate transform-origin based on card position
+  const cardCenterX = cardRect.left + cardRect.width / 2;
+  const cardCenterY = cardRect.top + cardRect.height / 2;
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+
+  // Set transform-origin to the center of the card
+  modalStyle.transformOrigin = `${(cardCenterX / viewportWidth) * 100}% ${(cardCenterY / viewportHeight) * 100}%`;
+
+
+  card.style.transform = "rotateY(45deg)";
+  card.style.transition = "transform 1.5s ease";
 
 
   activeCard = card;
@@ -67,7 +106,7 @@ function openCard(event, date) {
 
   setTimeout(() => {
     modal.style.display = "flex";
-    modal.style.animation = "zoomFromCard 0.7s ease";
+    modal.style.animation = "zoomFromCard 1.7s ease";
   }, 500);
 }
 
@@ -77,12 +116,18 @@ function closeModal() {
 
   modal.style.display = "none";
 
-
-  if (card) {
-    card.style.transform = "rotateY(0deg)";
-    card.style.background = "rgb(200, 200, 200)";
-    activeCard = null;
-  }
+  setTimeout(() => {
+    // Reset the active card's flip animation
+    if (activeCard) {
+      activeCard.style.transform = "rotateY(0deg)"; // Reset to original position
+      activeCard.style.transition = "transform 1.5s ease"; // Smooth animation back
+      modal.style.display = "none";
+      overlay.style.opacity = "0";
+      overlay.style.pointerEvents = "none";
+      card.style.background = "rgb(180, 180, 180)";
+      activeCard = null; // Clear the reference
+    }
+  }, 300); // Delay matches modal's closing animation duration
 }
 
 window.onload = loadCalendar;

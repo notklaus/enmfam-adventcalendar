@@ -47,7 +47,7 @@ body {
   perspective: 1000px;
 }
 
-/* Updated Card Styles */
+/* Card Styles */
 .card {
   display: flex;
   justify-content: center;
@@ -69,6 +69,8 @@ body {
   border: 2px solid green; /* Green box border */
   transform-origin: right; /* Flip from the right side */
   transition: transform 0.5s ease, background 0.3s ease; /* Smooth transform and background color changes */
+  transform-style: preserve-3d; /* Allow 3D children */
+  /* backface-visibility: hidden; Hide the back when flipped */
 }
 
 /* Add hover effect for slight scaling */
@@ -79,18 +81,19 @@ body {
 /* Christmas Icon Styles */
 .card .christmas-icon {
   position: absolute;
-  font-size: calc(14px + 0.2vw); /* Responsive size */
-  opacity: 0.8; /* Slight transparency */
+  font-size: calc(14px + 0.2vw);
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 /* Modal Animation */
 @keyframes zoomFromCard {
   0% {
-    transform: scale(0.5) translate(-50%, -50%);
+    transform: scale(0.5);
     opacity: 0;
   }
   100% {
-    transform: scale(1) translate(0, 0);
+    transform: scale(1);
     opacity: 1;
   }
 }
@@ -103,11 +106,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  background: transparent;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  animation: zoomFromCard 0.7s ease forwards; /* Modal zoom animation */
+  animation: zoomFromCard 0.7s ease forwards;
 }
 
 .modal-content {
@@ -118,7 +121,7 @@ body {
   max-width: 90%;
   max-height: 90%;
   overflow: auto;
-  animation: zoomFromCard 0.7s ease forwards; /* Modal zoom animation */
+  /* animation: zoomFromCard 0.7s ease forwards;  */
 }
 
 .modal-header {
@@ -136,4 +139,18 @@ body {
 .modal-close {
   cursor: pointer;
   font-size: 24px;
+}
+
+/* Overlay for dimming the background */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  z-index: 900; /* Below the modal */
+  transition: opacity 0.7s ease; /* Smooth dimming effect */
+  pointer-events: none; /* Prevent clicks when not visible */
 }
