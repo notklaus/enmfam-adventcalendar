@@ -6,38 +6,48 @@ function loadCalendar() {
   const numbers = Array.from({ length: 24 }, (_, i) => i + 1);
   shuffleArray(numbers);
 
-  // Define card colors
-  const colors = [
-    "rgb(0, 150, 87)",
-    "rgb(97, 206, 187)",
-    "rgb(106, 222, 70)",
-    "rgb(224, 48, 255)",
-    "rgb(244, 111, 0)"
-  ];
+  // Define Christmas icons
+  const christmasIcons = ["🎄", "🎅", "❄", "🎁", "⭐"];
 
   numbers.forEach((number) => {
-    // Randomize color
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
     // Create card
     const card = document.createElement("div");
     card.className = "card";
-    card.style.setProperty("--card-color", randomColor);
     card.setAttribute("onclick", `openCard(event, '${number}')`);
     card.textContent = `${number}${getOrdinalSuffix(number)}`;
 
-    // Randomly add a snow icon
-    if (Math.random() > 0.5) { // 50% chance to add a snow icon
-      const snowIcon = document.createElement("div");
-      snowIcon.className = "snow-icon";
-      snowIcon.innerHTML = "❄"; // Snowflake emoji
-      card.appendChild(snowIcon);
+    // Add 1-3 random Christmas icons to the card
+    const iconCount = Math.floor(Math.random() * 3) + 1; // Randomize 1 to 3 icons
+    for (let i = 0; i < iconCount; i++) {
+      const icon = document.createElement("div");
+      icon.className = "christmas-icon";
+      icon.innerHTML = christmasIcons[Math.floor(Math.random() * christmasIcons.length)];
+      icon.style.top = `${Math.random() * 80}%`; // Random position vertically
+      icon.style.left = `${Math.random() * 80}%`; // Random position horizontally
+      card.appendChild(icon);
     }
 
     // Append card to calendar
     calendar.appendChild(card);
   });
 }
+
+// Helper function to shuffle an array (Fisher-Yates Shuffle)
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// Helper function to get ordinal suffix
+function getOrdinalSuffix(num) {
+  if (num % 10 === 1 && num % 100 !== 11) return "st";
+  if (num % 10 === 2 && num % 100 !== 12) return "nd";
+  if (num % 10 === 3 && num % 100 !== 13) return "rd";
+  return "th";
+}
+
 
 // Helper function to shuffle an array (Fisher-Yates Shuffle)
 function shuffleArray(array) {
