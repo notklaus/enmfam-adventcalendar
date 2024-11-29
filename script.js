@@ -1,4 +1,3 @@
-
 function loadCalendar() {
   const calendar = document.getElementById("calendar");
 
@@ -6,25 +5,11 @@ function loadCalendar() {
   const numbers = Array.from({ length: 24 }, (_, i) => i + 1);
   shuffleArray(numbers);
 
-  // Define smoother, dimmer Christmas gradients
-  const gradients = [
-    "linear-gradient(135deg, rgba(255, 0, 0, 0.9), rgba(255, 255, 255, 0.8), rgba(0, 128, 0, 0.9))",
-    "linear-gradient(225deg, rgba(255, 0, 0, 0.8), rgba(0, 128, 0, 0.7), rgba(255, 255, 255, 0.8))",
-    "linear-gradient(45deg, rgba(255, 0, 0, 0.7), rgba(255, 255, 255, 0.7), rgba(0, 128, 0, 0.7))",
-    "linear-gradient(315deg, rgba(255, 0, 0, 0.85), rgba(0, 128, 0, 0.75), rgba(255, 255, 255, 0.7))",
-  ];
-
-  // Define Christmas icons
   const christmasIcons = ["🎄", "🎅", "❄", "🎁", "⭐"];
 
   numbers.forEach((number) => {
-    // Randomize gradient
-    const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
-
-    // Create card
     const card = document.createElement("div");
     card.className = "card";
-    card.style.setProperty("--card-gradient", randomGradient);
     card.setAttribute("onclick", `openCard(event, '${number}')`);
     card.textContent = `${number}${getOrdinalSuffix(number)}`;
 
@@ -35,7 +20,6 @@ function loadCalendar() {
       icon.className = "christmas-icon";
       icon.innerHTML = christmasIcons[Math.floor(Math.random() * christmasIcons.length)];
 
-      // Position icons away from the center
       const randomPosition = () => Math.random() * 60 + 20; // Random position (20% to 80%)
       icon.style.top = `${randomPosition()}%`;
       icon.style.left = `${randomPosition()}%`;
@@ -43,13 +27,10 @@ function loadCalendar() {
       card.appendChild(icon);
     }
 
-    // Append card to calendar
     calendar.appendChild(card);
   });
 }
 
-
-// Helper function to shuffle an array (Fisher-Yates Shuffle)
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -57,7 +38,6 @@ function shuffleArray(array) {
   }
 }
 
-// Helper function to get ordinal suffix
 function getOrdinalSuffix(num) {
   if (num % 10 === 1 && num % 100 !== 11) return "st";
   if (num % 10 === 2 && num % 100 !== 12) return "nd";
@@ -65,83 +45,47 @@ function getOrdinalSuffix(num) {
   return "th";
 }
 
-// Helper function to shuffle an array (Fisher-Yates Shuffle)
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-
-// Helper function to get ordinal suffix
-function getOrdinalSuffix(num) {
-  if (num % 10 === 1 && num % 100 !== 11) return "st";
-  if (num % 10 === 2 && num % 100 !== 12) return "nd";
-  if (num % 10 === 3 && num % 100 !== 13) return "rd";
-  return "th";
-}
-
-
-// Helper function to shuffle an array (Fisher-Yates Shuffle)
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-
-// Helper function to get ordinal suffix
-function getOrdinalSuffix(num) {
-  if (num % 10 === 1 && num % 100 !== 11) return "st";
-  if (num % 10 === 2 && num % 100 !== 12) return "nd";
-  if (num % 10 === 3 && num % 100 !== 13) return "rd";
-  return "th";
-}
-
+let activeCard = null;
 
 function openCard(event, date) {
+  const card = event.target;
   const modal = document.getElementById("modal");
   const ordinalDate = `${date}${getOrdinalSuffix(date)}`;
   const dareIndex = date - 1;
   const dareText = dares[dareIndex] || "No dare available for this date.";
+
   document.getElementById("modal-date").innerText = `December ${ordinalDate}`;
   document.getElementById("modal-body").innerText = dareText;
-  modal.style.display = "flex";
-}
 
-// function openCard(event, date) {
-//   const modal = document.getElementById("modal");
-//   const ordinalDate = `${date}${getOrdinalSuffix(date)}`;
-//   document.getElementById("modal-date").innerText = `December ${ordinalDate}`;
-//   const dareIndex = date - 1;
-//   const dareText = dares[dareIndex] || "No dare available for this date.";
-//   document.getElementById("modal-body").innerText = dareText;
-//   modal.style.display = "flex";
-// }
+
+  card.style.transform = "rotateY(70deg)";
+  card.style.transition = "transform 0.5s ease";
+
+
+  activeCard = card;
+
+
+  setTimeout(() => {
+    modal.style.display = "flex";
+    modal.style.animation = "zoomFromCard 0.7s ease";
+  }, 500);
+}
 
 function closeModal() {
   const modal = document.getElementById("modal");
-  modal.style.display = "none";
-}
+  const card = document.querySelector(".card[style*='rotateY']");
 
-// Helper function to shuffle an array (Fisher-Yates Shuffle)
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+  modal.style.display = "none";
+
+
+  if (card) {
+    card.style.transform = "rotateY(0deg)";
+    card.style.background = "rgb(200, 200, 200)";
+    activeCard = null;
   }
 }
 
-function getOrdinalSuffix(num) {
-  if (num % 10 === 1 && num % 100 !== 11) return "st";
-  if (num % 10 === 2 && num % 100 !== 12) return "nd";
-  if (num % 10 === 3 && num % 100 !== 13) return "rd";
-  return "th";
-}
-
-// Initialize calendar
 window.onload = loadCalendar;
-
 
 const dares = [
   "I dare you to meet 3 people who are practicing solo polyamory (prioritize independence while maintaining multiple relationships).",

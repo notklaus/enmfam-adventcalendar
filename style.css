@@ -3,7 +3,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: rgb(0, 53, 87); /* Page background color */
+  background: rgb(120, 0, 0); /* Page background color */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@ body {
   justify-content: space-between;
   width: 100%;
   padding: 10px 50px; /* Top/Bottom: 10px, Left/Right: 50px */
-  background: rgb(91, 6, 107); /* Header line color */
+  background: rgb(0, 53, 87); /* Header line color */
   color: white;
   box-sizing: border-box; /* Ensures padding doesn't affect layout */
 }
@@ -44,26 +44,36 @@ body {
   margin: 20px auto;
   grid-template-columns: repeat(auto-fit, minmax(50px, 150px)); /* Start at 150px, shrink to 50px, spill over */
   box-sizing: border-box;
+  perspective: 1000px;
 }
 
+/* Updated Card Styles */
 .card {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  color: white;
+  color: rgb(120, 0, 0); /* Dark red text */
   font-size: calc(18px + 0.5vw); /* Dynamically adjust font size */
   font-weight: bold;
   text-align: center;
   cursor: pointer;
   padding: 10px;
-  background: var(--card-gradient); /* Dynamic gradient */
-  height: auto; /* Ensure flexible height */
+  background: rgb(230, 230, 230); /* Dimmer white background */
+  height: auto;
   aspect-ratio: 1 / 1; /* Keep cards square */
-  min-width: 50px; /* Minimum size of cards */
-  max-width: 150px; /* Default size when space allows */
-  position: relative; /* Needed for icon positioning */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow for "pop" effect */
+  min-width: 50px;
+  max-width: 150px;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Shadow for "pop" effect */
+  border: 2px solid green; /* Green box border */
+  transform-origin: right; /* Flip from the right side */
+  transition: transform 0.5s ease, background 0.3s ease; /* Smooth transform and background color changes */
+}
+
+/* Add hover effect for slight scaling */
+.card:hover {
+  transform: scale(1.05);
 }
 
 /* Christmas Icon Styles */
@@ -73,18 +83,31 @@ body {
   opacity: 0.8; /* Slight transparency */
 }
 
-/* Modal Styles */
+/* Modal Animation */
+@keyframes zoomFromCard {
+  0% {
+    transform: scale(0.5) translate(-50%, -50%);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+}
+
+/* Modal Animation */
 .modal {
   display: none;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensure it appears on top */
+  z-index: 1000;
+  animation: zoomFromCard 0.7s ease forwards; /* Modal zoom animation */
 }
 
 .modal-content {
@@ -95,6 +118,7 @@ body {
   max-width: 90%;
   max-height: 90%;
   overflow: auto;
+  animation: zoomFromCard 0.7s ease forwards; /* Modal zoom animation */
 }
 
 .modal-header {
