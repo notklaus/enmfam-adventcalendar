@@ -62,6 +62,17 @@ body {
   aspect-ratio: 1 / 1; /* Keep cards square */
   min-width: 50px; /* Minimum size of cards */
   max-width: 150px; /* Default size when space allows */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow for "pop" effect */
+  position: relative; /* Needed for snow icon positioning */
+}
+
+/* Snow Icon */
+.card .snow-icon {
+  position: absolute;
+  top: 10px; /* Adjust positioning */
+  right: 10px;
+  font-size: 20px; /* Size of the snow icon */
+  opacity: 0.8; /* Slight transparency for a subtle effect */
 }
 
 /* Modal Styles */
