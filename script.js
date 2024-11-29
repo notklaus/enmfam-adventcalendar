@@ -6,12 +6,12 @@ function loadCalendar() {
   const numbers = Array.from({ length: 24 }, (_, i) => i + 1);
   shuffleArray(numbers);
 
-  // Define Christmas gradients
+  // Define smoother, dimmer Christmas gradients
   const gradients = [
-    "linear-gradient(135deg, red 70%, white 20%, green 10%)",
-    "linear-gradient(225deg, red 75%, green 15%, white 10%)",
-    "linear-gradient(45deg, red 80%, white 10%, green 10%)",
-    "linear-gradient(315deg, red 90%, green 5%, white 5%)",
+    "linear-gradient(135deg, rgba(255, 0, 0, 0.9), rgba(255, 255, 255, 0.8), rgba(0, 128, 0, 0.9))",
+    "linear-gradient(225deg, rgba(255, 0, 0, 0.8), rgba(0, 128, 0, 0.7), rgba(255, 255, 255, 0.8))",
+    "linear-gradient(45deg, rgba(255, 0, 0, 0.7), rgba(255, 255, 255, 0.7), rgba(0, 128, 0, 0.7))",
+    "linear-gradient(315deg, rgba(255, 0, 0, 0.85), rgba(0, 128, 0, 0.75), rgba(255, 255, 255, 0.7))",
   ];
 
   // Define Christmas icons
@@ -47,6 +47,7 @@ function loadCalendar() {
     calendar.appendChild(card);
   });
 }
+
 
 // Helper function to shuffle an array (Fisher-Yates Shuffle)
 function shuffleArray(array) {
