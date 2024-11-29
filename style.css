@@ -57,7 +57,7 @@ body {
   text-align: center;
   cursor: pointer;
   padding: 10px;
-  background: linear-gradient(135deg, green, white, red); /* Christmas gradient */
+  background: linear-gradient(135deg, red 50%, white 30%, green 20%); /* Red-heavy gradient */
   background-size: 200% 200%; /* Make gradient smooth */
   height: auto; /* Ensure flexible height */
   aspect-ratio: 1 / 1; /* Keep cards square */
