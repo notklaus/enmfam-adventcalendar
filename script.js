@@ -6,30 +6,62 @@ function loadCalendar() {
   const numbers = Array.from({ length: 24 }, (_, i) => i + 1);
   shuffleArray(numbers);
 
+  // Define Christmas gradients
+  const gradients = [
+    "linear-gradient(135deg, red 70%, white 20%, green 10%)",
+    "linear-gradient(225deg, red 75%, green 15%, white 10%)",
+    "linear-gradient(45deg, red 80%, white 10%, green 10%)",
+    "linear-gradient(315deg, red 90%, green 5%, white 5%)",
+  ];
+
   // Define Christmas icons
   const christmasIcons = ["🎄", "🎅", "❄", "🎁", "⭐"];
 
   numbers.forEach((number) => {
+    // Randomize gradient
+    const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
+
     // Create card
     const card = document.createElement("div");
     card.className = "card";
+    card.style.setProperty("--card-gradient", randomGradient);
     card.setAttribute("onclick", `openCard(event, '${number}')`);
     card.textContent = `${number}${getOrdinalSuffix(number)}`;
 
-    // Add 1-3 random Christmas icons to the card
-    const iconCount = Math.floor(Math.random() * 3) + 1; // Randomize 1 to 3 icons
+    // Add 1-2 random Christmas icons to the card
+    const iconCount = Math.floor(Math.random() * 2) + 1; // Randomize 1 to 2 icons
     for (let i = 0; i < iconCount; i++) {
       const icon = document.createElement("div");
       icon.className = "christmas-icon";
       icon.innerHTML = christmasIcons[Math.floor(Math.random() * christmasIcons.length)];
-      icon.style.top = `${Math.random() * 80}%`; // Random position vertically
-      icon.style.left = `${Math.random() * 80}%`; // Random position horizontally
+
+      // Position icons away from the center
+      const randomPosition = () => Math.random() * 60 + 20; // Random position (20% to 80%)
+      icon.style.top = `${randomPosition()}%`;
+      icon.style.left = `${randomPosition()}%`;
+
       card.appendChild(icon);
     }
 
     // Append card to calendar
     calendar.appendChild(card);
   });
+}
+
+// Helper function to shuffle an array (Fisher-Yates Shuffle)
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// Helper function to get ordinal suffix
+function getOrdinalSuffix(num) {
+  if (num % 10 === 1 && num % 100 !== 11) return "st";
+  if (num % 10 === 2 && num % 100 !== 12) return "nd";
+  if (num % 10 === 3 && num % 100 !== 13) return "rd";
+  return "th";
 }
 
 // Helper function to shuffle an array (Fisher-Yates Shuffle)
