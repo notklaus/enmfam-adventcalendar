@@ -52,7 +52,7 @@ body {
   align-items: center;
   border-radius: 5px;
   color: white;
-  font-size: calc(12px + 0.5vw); /* Dynamically adjust font size */
+  font-size: calc(12px + 1vw); /* Dynamically adjust font size */
   font-weight: bold;
   text-align: center;
   cursor: pointer;
