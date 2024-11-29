@@ -57,22 +57,21 @@ body {
   text-align: center;
   cursor: pointer;
   padding: 10px;
-  background: var(--card-color); /* Dynamic card color */
+  background: linear-gradient(135deg, green, white, red); /* Christmas gradient */
+  background-size: 200% 200%; /* Make gradient smooth */
   height: auto; /* Ensure flexible height */
   aspect-ratio: 1 / 1; /* Keep cards square */
   min-width: 50px; /* Minimum size of cards */
   max-width: 150px; /* Default size when space allows */
+  position: relative; /* Needed for icon positioning */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow for "pop" effect */
-  position: relative; /* Needed for snow icon positioning */
 }
 
-/* Snow Icon */
-.card .snow-icon {
+/* Christmas Icon Styles */
+.card .christmas-icon {
   position: absolute;
-  top: 10px; /* Adjust positioning */
-  right: 10px;
-  font-size: 20px; /* Size of the snow icon */
-  opacity: 0.8; /* Slight transparency for a subtle effect */
+  font-size: calc(14px + 0.2vw); /* Responsive size */
+  opacity: 0.8; /* Slight transparency */
 }
 
 /* Modal Styles */
