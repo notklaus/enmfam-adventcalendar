@@ -154,3 +154,11 @@ body {
   transition: opacity 0.7s ease; /* Smooth dimming effect */
   pointer-events: none; /* Prevent clicks when not visible */
 }
+
+#easter-egg {
+  display: none;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 20px;
+}

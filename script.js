@@ -14,6 +14,7 @@ function loadCalendar() {
     card.className = "card";
     card.setAttribute("data-date", number); // Attach the date as a custom attribute
     card.textContent = `${number}${getOrdinalSuffix(number)}`;
+    // card.textContent = `${number}`;
     card.addEventListener("click", (event) => openCard(event, number));
 
     // Add 1-2 random Christmas icons to the card
