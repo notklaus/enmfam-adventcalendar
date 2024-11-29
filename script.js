@@ -1,5 +1,4 @@
 
-
 function loadCalendar() {
   const calendar = document.getElementById("calendar");
 
@@ -16,29 +15,46 @@ function loadCalendar() {
     "rgb(244, 111, 0)"
   ];
 
-  // Function to dim the color by 20%
-  const dimColor = (rgb) => {
-    const match = rgb.match(/\d+/g).map(Number); // Extract RGB components
-    const [r, g, b] = match.map(value => Math.max(0, Math.floor(value * 0.8))); // Reduce by 20%
-    return `rgb(${r}, ${g}, ${b})`;
-  };
-
   numbers.forEach((number) => {
-    // Randomize color and dim it
-    const originalColor = colors[Math.floor(Math.random() * colors.length)];
-    const dimmedColor = dimColor(originalColor);
+    // Randomize color
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
     // Create card
     const card = document.createElement("div");
     card.className = "card";
-    card.style.setProperty("--card-color", dimmedColor);
+    card.style.setProperty("--card-color", randomColor);
     card.setAttribute("onclick", `openCard(event, '${number}')`);
     card.textContent = `${number}${getOrdinalSuffix(number)}`;
+
+    // Randomly add a snow icon
+    if (Math.random() > 0.5) { // 50% chance to add a snow icon
+      const snowIcon = document.createElement("div");
+      snowIcon.className = "snow-icon";
+      snowIcon.innerHTML = "❄"; // Snowflake emoji
+      card.appendChild(snowIcon);
+    }
 
     // Append card to calendar
     calendar.appendChild(card);
   });
 }
+
+// Helper function to shuffle an array (Fisher-Yates Shuffle)
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// Helper function to get ordinal suffix
+function getOrdinalSuffix(num) {
+  if (num % 10 === 1 && num % 100 !== 11) return "st";
+  if (num % 10 === 2 && num % 100 !== 12) return "nd";
+  if (num % 10 === 3 && num % 100 !== 13) return "rd";
+  return "th";
+}
+
 
 function openCard(event, date) {
   const modal = document.getElementById("modal");
