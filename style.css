@@ -3,71 +3,104 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background: rgb(0, 53, 87); /* Page background color */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(to bottom, #ffefd5, #ffc0cb);
+  height: 100%;
 }
 
-.container {
-  text-align: center;
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 50px; /* Top/Bottom: 10px, Left/Right: 50px */
+  background: rgb(91, 6, 107); /* Header line color */
+  color: white;
+  box-sizing: border-box; /* Ensures padding doesn't affect layout */
 }
 
-h1 {
-  margin-bottom: 20px;
-  color: #333;
+.title {
+  font-style: italic;
+  font-size: 24px;
 }
 
-/* Calendar Grid */
+.links a {
+  color: white;
+  margin-left: 10px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
 .calendar {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 20px;
+  gap: 15px;
   width: 90%;
-  max-width: 800px;
+  max-width: 1000px; /* Maximum width for the grid container */
+  margin: 20px auto;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 150px)); /* Start at 150px, shrink to 50px, spill over */
+  box-sizing: border-box;
 }
 
-/* Card Styles */
 .card {
-  perspective: 1000px;
-  width: 100px;
-  height: 100px;
-  cursor: pointer;
-}
-
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
-}
-
-.card:hover .card-inner {
-  transform: rotateY(180deg);
-}
-
-.card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 5px;
   color: white;
+  font-size: calc(12px + 0.5vw); /* Dynamically adjust font size */
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  background: var(--card-color); /* Dynamic card color */
+  height: auto; /* Ensure flexible height */
+  aspect-ratio: 1 / 1; /* Keep cards square */
+  min-width: 50px; /* Minimum size of cards */
+  max-width: 150px; /* Default size when space allows */
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears on top */
+}
+
+.modal-content {
+  background: rgb(0, 53, 87);
+  color: white;
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 0px 10px 0px;
+  align-items: center;
+}
+
+.modal-date {
   font-weight: bold;
   font-size: 20px;
 }
 
-.card-front {
-  background: #ff7f50;
-}
-
-.card-back {
-  background: #4caf50;
-  transform: rotateY(180deg);
+.modal-close {
+  cursor: pointer;
+  font-size: 24px;
 }
