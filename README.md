@@ -9,4 +9,4 @@ This is a simple advent calendar project with interactive spinning cards that re
 ## Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/advent-calendar.git
+   git clone [https://github.com/your-username/advent-calendar.git](https://github.com/notklaus/enmfam-adventcalendar.git)
