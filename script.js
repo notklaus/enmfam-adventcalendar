@@ -154,12 +154,12 @@ function closeModal() {
   setTimeout(() => {
     // Reset the active card's flip animation
     if (activeCard) {
+      card.style.background = "rgb(180, 180, 180)";
+      overlay.style.opacity = "0";
+      modal.style.display = "none";
+      overlay.style.pointerEvents = "none";
       activeCard.style.transform = "rotateY(0deg)"; // Reset to original position
       activeCard.style.transition = "transform 1.5s ease"; // Smooth animation back
-      modal.style.display = "none";
-      overlay.style.opacity = "0";
-      overlay.style.pointerEvents = "none";
-      card.style.background = "rgb(180, 180, 180)";
       activeCard = null; // Clear the reference
     }
   }, 300); // Delay matches modal's closing animation duration
