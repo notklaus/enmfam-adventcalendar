@@ -7,7 +7,41 @@ function loadCalendar() {
   const numbers = Array.from({ length: count }, (_, i) => i + startNumber);
   shuffleArray(numbers);
 
-  const christmasIcons = ["🎄", "🎅", "❄", "🎁", "⭐"];
+  // const christmasIcons = ["🎄", "🎅", "❄", "🎁", "⭐"];
+  const christmasIcons = [
+    "🎄", // Christmas Tree
+    "🎅", // Santa Claus
+    "🤶", // Mrs. Claus
+    "❄", // Snowflake
+    "🎁", // Wrapped Gift
+    "⭐", // Star
+    "🔔", // Bell
+    "🕯", // Candle
+    "⛄", // Snowman
+    "🦌", // Deer
+    "🎀", // Ribbon
+    "🍪", // Cookie
+    "🥛", // Glass of Milk
+    "🛷", // Sled
+    "🌟", // Glowing Star
+    "🎶", // Musical Notes (Caroling)
+    "🍭", // Candy
+    "🍬", // Wrapped Candy
+    "🌲", // Evergreen Tree
+    "🎡", // Ferris Wheel (Holiday Fair)
+    "🎩", // Top Hat (Frosty the Snowman)
+    "🎅🏻", // Light Skin Tone Santa
+    "🎅🏽", // Medium Skin Tone Santa
+    "🎅🏿", // Dark Skin Tone Santa
+    "🎵", // Musical Note
+    "🥂", // Clinking Glasses
+    "🍷", // Wine Glass
+    "🎸", // Guitar (Holiday Music)
+    "❇", // Sparkle
+    "✨", // Sparkles
+    "💫", // Dizzy
+    "🎗", // Reminder Ribbon
+  ];
 
   numbers.forEach((number) => {
     const card = document.createElement("div");
