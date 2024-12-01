@@ -3,7 +3,7 @@ function loadCalendar() {
 
   // Define card numbers (1 to 24) and shuffle them
   const startNumber = 1;
-  const count = 24;
+  const count = 12;
   const numbers = Array.from({ length: count }, (_, i) => i + startNumber);
   shuffleArray(numbers);
 
@@ -13,8 +13,8 @@ function loadCalendar() {
     const card = document.createElement("div");
     card.className = "card";
     card.setAttribute("data-date", number); // Attach the date as a custom attribute
-    card.textContent = `${number}${getOrdinalSuffix(number)}`;
-    // card.textContent = `${number}`;
+    // card.textContent = `${number}${getOrdinalSuffix(number)}`;
+    card.textContent = `${number}`;
     card.addEventListener("click", (event) => openCard(event, number));
 
     // Add 1-2 random Christmas icons to the card
