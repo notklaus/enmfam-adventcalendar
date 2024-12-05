@@ -109,11 +109,11 @@ function openCard(event, date) {
   const modal = document.getElementById("modal");
   // const ordinalDate = `${date}${getOrdinalSuffix(date)}`;
   const ordinalDate = `${date}`;
-  const dareIndex = date - 1;
-  const dareText = dares[dareIndex] || "No dare available for this date.";
+  const cardIndex = date - 1;
+  const cardText = contentOrderedArray[cardIndex] || "Nothing available for this date! roll again!";
 
-  document.getElementById("modal-date").innerText = `Dare ${ordinalDate}`;
-  document.getElementById("modal-body").innerText = dareText;
+  document.getElementById("modal-date").innerText = `Door ${ordinalDate}`;
+  document.getElementById("modal-body").innerText = cardText;
 
   // Show overlay with dimming effect
   overlay.style.opacity = "0.8";
@@ -168,29 +168,17 @@ function closeModal() {
 
 window.onload = loadCalendar;
 
-const dares = [
-  "We dare you to meet 3 people who are practicing solo polyamory (prioritize independence while maintaining multiple relationships).",
-  "We dare you to meet 2 people in a relationship where one partner is polyamorous and the other is monogamous (poly/mono dynamic).",
-  "We dare you to meet 3 people who consider themselves relationship anarchists (reject hierarchical relationship norms).",
-  "We dare you to meet 3 people who actively use 'kitchen table polyamory' as their relationship model (all partners comfortable engaging in shared social spaces).",
-  "We dare you to meet 2 people who prioritize platonic relationships in their polyamorous structure (queerplatonic or non-romantic partnerships).",
-  "We dare you to meet 3 people who have explored open relationships as a gateway to ethical non-monogamy (consensual non-monogamy without emotional connections beyond the primary).",
-  "We dare you to meet 3 people who practice hierarchical polyamory (prioritize a primary partner while having secondary relationships).",
-  "We dare you to meet 1 person who is part of a triad or throuple (three people in a consensual, mutual relationship).",
-  "We dare you to meet 2 people who have been part of a polycule for over 1 year (a network of polyamorous relationships).",
-  "We dare you to meet 3 people who identify as swingers (focus on consensual non-monogamy, often centered on sexual exploration).",
-  "We dare you to meet 3 people who have transitioned from monogamy to polyamory within the past year and ask about their journey.",
-  "We dare you to meet 1 person who is a community organizer or educator in the ethical non-monogamy/polyamory space to learn about the broader movement.",
-  "We dare you to meet 3 people who are in a long-distance polyamorous relationship and ask about their challenges.",
-  "We dare you to meet 2 people who explore polyamory primarily in a queer context and learn about their experiences.",
-  "We dare you to meet 3 people who have successfully navigated a breakup within a polyamorous structure and maintained connections.",
-  "We dare you to meet 2 people who use agreements or contracts to manage their polyamorous relationships.",
-  "We dare you to meet 3 people who are polyamorous parents and ask how they balance parenting and relationships.",
-  "We dare you to meet 1 person who has transitioned from hierarchical to non-hierarchical polyamory and learn about their journey.",
-  "We dare you to meet 3 people who date separately but maintain strong boundaries within their partnerships.",
-  "We dare you to meet 2 people who host polyamorous events or gatherings and learn about their motivations.",
-  "We dare you to meet 3 people who prioritize metamour (partner's partner) relationships and build friendships with them.",
-  "We dare you to meet 2 people who explore polyamory through online or virtual relationships.",
-  "We dare you to meet 3 people who are new to polyamory and ask them about their initial fears and experiences.",
-  "We dare you to meet 1 person who has been practicing polyamory for over 3 years and learn about their perspective."
+const contentOrderedArray = [
+  "Meet 3 new people who practice solo polyamory (prioritize independence while maintaining multiple relationships) or relationship anarchy (reject hierarchical relationship norms) and ask about why it works for them?",
+  "Introduce yourself to 3 new people and ask them “If you could instantly master one skill, what would it be and why?”",
+  "Meet 3 new people and ask them “What’s a piece of advice you’ve received that has really helped you on your non-monogamy journey?”",
+  "Meet 3 new people who have experienced 'kitchen table polyamory' (all partners comfortable engaging in shared social spaces) and ask them what enabled that to work for them?",
+  "Meet 3 new people and ask them “What’s a piece of advice you’ve received that you credit with positively impacting your life?”",
+  "Meet 3 new people who actively participate in sex positive or alternative relationship community events and ask them what they have learned about being part of community as a result?",
+  "Pending - 7 - We dare you to meet 3 people who practice hierarchical polyamory (prioritize a primary partner while having secondary relationships).",
+  "Pending - 8 - We dare you to meet 1 person who is part of a triad or throuple (three people in a consensual, mutual relationship).",
+  "Pending - 9 - We dare you to meet 2 people who have been part of a polycule for over 1 year (a network of polyamorous relationships).",
+  "Pending - 10 - We dare you to meet 3 people who have transitioned from monogamy to polyamory within the past year and ask about their journey.",
+  "Pending - 11 - We dare you to meet 1 person who is a community organizer or educator in the ethical non-monogamy/polyamory space to learn about the broader movement.",
+  "Pending - 12 - We dare you to meet 1 person who is a community organizer or educator in the ethical non-monogamy/polyamory space to learn about the broader movement.",
 ];
