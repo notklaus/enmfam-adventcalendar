@@ -176,9 +176,9 @@ const contentOrderedArray = [
   "Meet 3 new people and ask them “What’s a piece of advice you’ve received that you credit with positively impacting your life?”",
   "Meet 3 new people who regularly organize or attend community events and ask them what's someting they've learned as a result of being part of that community?",
   "Meet 3 new people and ask them, “What’s a book, podcast, or resource that has had a big impact on you and why?”",
-  "Meet 3 new people and ask them "What's are two standout moments of joy or feeling proud you've experienced during the past year?" ",
-  "Meet 3 new people and ask them "What's are two standout moments of joy or feeling proud you've experienced during the past year?" ",
-  "Meet 3 new people and ask them "What's something you've always wanted to do or try but haven't yet?"",
+  "Meet 3 new people and ask them “What's are two standout moments of joy or feeling proud you've experienced during the past year?”",
+  "Meet 3 new people and ask them “What's are two standout moments of joy or feeling proud you've experienced during the past year?”",
+  "Meet 3 new people and ask them “What's something you've always wanted to do or try but haven't yet?”",
   "Meet 3 new people and ask them, “What’s something you’ve learned about yourself through non-monogamy?”",
-  "Meet 3 people who have created a tradition or ritual that's helped them nurture their relationships and ask them how it's helped their relationship? ",
+  "Meet 3 people who have created a tradition or ritual that's helped them nurture their relationships and ask them how it's helped their relationship?",
 ];
