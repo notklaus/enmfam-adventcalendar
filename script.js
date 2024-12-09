@@ -170,7 +170,7 @@ window.onload = loadCalendar;
 
 const contentOrderedArray = [
   "Meet 3 new people and ask them “What's are two standout moments of joy or feeling proud you've experienced during the past year?”",
-  "Meet 3 people who practice solo polyamory or relationship anarchy and ask about why it works for them. (1) Solo Polyamory: prioritize their independence while enjoying multiple intimate relationships) (2) Relationship Anarchy: dont subscribe to hierarchical relationship norms place higher significance on romanitic conncections over other types of connection.",
+  "Meet 3 people who practice solo polyamory or relationship anarchy and ask about why it works for them. (1) Solo Polyamory: prioritize their independence while enjoying multiple intimate relationships. (2) Relationship Anarchy: don't subscribe to hierarchical relationship norms that place higher significance on romantic connections over other types of connection.",
   "Introduce yourself to 3 new people and ask them “If you could instantly master one skill, what would it be and why?”",
   "Meet 3 new people and ask them “What’s a piece of advice you’ve received that has really helped you on your non-monogamy journey?”",
   "Meet 3 new people who have experienced 'kitchen table polyamory' (all partners comfortable engaging in shared social spaces) and ask them what enabled that to work for them?",
