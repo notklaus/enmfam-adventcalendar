@@ -169,6 +169,7 @@ function closeModal() {
 window.onload = loadCalendar;
 
 const contentOrderedArray = [
+  "Meet 3 new people and ask them “What's are two standout moments of joy or feeling proud you've experienced during the past year?”",
   "Meet 3 people who practice solo polyamory or relationship anarchy and ask about why it works for them. (1) Solo Polyamory: prioritize their independence while enjoying multiple intimate relationships) (2) Relationship Anarchy: dont subscribe to hierarchical relationship norms place higher significance on romanitic conncections over other types of connection.",
   "Introduce yourself to 3 new people and ask them “If you could instantly master one skill, what would it be and why?”",
   "Meet 3 new people and ask them “What’s a piece of advice you’ve received that has really helped you on your non-monogamy journey?”",
@@ -176,7 +177,6 @@ const contentOrderedArray = [
   "Meet 3 new people and ask them “What’s a piece of advice you’ve received that you credit with positively impacting your life?”",
   "Meet 3 new people who regularly organize or attend community events and ask them what's someting they've learned as a result of being part of that community?",
   "Meet 3 new people and ask them, “What’s a book, podcast, or resource that has had a big impact on you and why?”",
-  "Meet 3 new people and ask them “What's are two standout moments of joy or feeling proud you've experienced during the past year?”",
   "Meet 3 new people and ask them “What's are two standout moments of joy or feeling proud you've experienced during the past year?”",
   "Meet 3 new people and ask them “What's something you've always wanted to do or try but haven't yet?”",
   "Meet 3 new people and ask them, “What’s something you’ve learned about yourself through non-monogamy?”",
