@@ -169,16 +169,16 @@ function closeModal() {
 window.onload = loadCalendar;
 
 const contentOrderedArray = [
-  "Meet 3 new people who practice solo polyamory (prioritize independence while maintaining multiple relationships) or relationship anarchy (reject hierarchical relationship norms) and ask about why it works for them?",
+  "Meet 3 people who practice solo polyamory or relationship anarchy and ask about why it works for them. (1) Solo Polyamory: prioritize their independence while enjoying multiple intimate relationships) (2) Relationship Anarchy: dont subscribe to hierarchical relationship norms place higher significance on romanitic conncections over other types of connection.",
   "Introduce yourself to 3 new people and ask them “If you could instantly master one skill, what would it be and why?”",
   "Meet 3 new people and ask them “What’s a piece of advice you’ve received that has really helped you on your non-monogamy journey?”",
   "Meet 3 new people who have experienced 'kitchen table polyamory' (all partners comfortable engaging in shared social spaces) and ask them what enabled that to work for them?",
   "Meet 3 new people and ask them “What’s a piece of advice you’ve received that you credit with positively impacting your life?”",
-  "Meet 3 new people who actively participate in sex positive or alternative relationship community events and ask them what they have learned about being part of community as a result?",
-  "Meet 3 new people and ask them, “What’s a book, podcast, or resource that has had a big impact on how you approach non-monogamy?”",
-  "Meet 3 new people and ask them, “How do you celebrate milestones or special moments in your relationships?”",
-  "Meet 3 new people and ask them, “What’s a misconception about non-monogamy you wish more people understood?”",
-  "Meet 3 new people who have navigated long-distance relationships and ask them what tools or strategies have worked best for staying connected.",
+  "Meet 3 new people who regularly organize or attend community events and ask them what's someting they've learned as a result of being part of that community?",
+  "Meet 3 new people and ask them, “What’s a book, podcast, or resource that has had a big impact on you and why?”",
+  "Meet 3 new people and ask them "What's are two standout moments of joy or feeling proud you've experienced during the past year?" ",
+  "Meet 3 new people and ask them "What's are two standout moments of joy or feeling proud you've experienced during the past year?" ",
+  "Meet 3 new people and ask them "What's something you've always wanted to do or try but haven't yet?"",
   "Meet 3 new people and ask them, “What’s something you’ve learned about yourself through non-monogamy?”",
-  "Meet 3 new people and ask them, “What’s a tradition or ritual you’ve created that helps nurture your relationships?”",
+  "Meet 3 people who have created a tradition or ritual that's helped them nurture their relationships and ask them how it's helped their relationship? ",
 ];
